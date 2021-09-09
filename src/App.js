@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { Button } from '@material-ui/core';
+import ModalDialog from './ModalDialog';
 
-function App() {
-  return (
+const App = () => {
+
+  const [open, setOpen] = useState(false);
+
+  // function to handle modal open
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  // function to handle modal close
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return(
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+      <Button variant="contained" color="primary" onClick={handleOpen}>Sign Up</Button>
 
+      <ModalDialog open={open} handleClose={handleClose} />
+    </div>
+  )
+}
 export default App;
